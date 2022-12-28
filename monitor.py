@@ -32,7 +32,8 @@ def fetch_with_progress(url):
 def okx():
     print("\nFetching OKX addresses...")
 
-    # this endpoint was found by inspecting the network requests made by the OKX website, it's not actually part of their API
+    # this endpoint was found by inspecting the network requests made by the OKX website;
+    # it's not actually part of their API
     root_url = "https://www.okx.com/v2/asset/audit/list"
     audit_file = requests.get(root_url).json()["data"][0]["download"]
     res_txt = fetch_with_progress(audit_file)
@@ -41,6 +42,8 @@ def okx():
     addresses_obj = {}
 
     for [coin, address] in addresses[["coin", "address"]].values:
+        coin = coin.replace("ERC20", "ETH")
+        coin = coin.replace("TRC20", "TRON")
         if (addresses_obj.get(coin) == None):
             addresses_obj[coin] = []
         addresses_obj[coin].append(address) 
@@ -81,11 +84,11 @@ def bitmex():
 UPDATE_INTERVAL = 30 * 60 # 30 minutes
 def main():
     print("Starting address monitor...")
-    # okx()
-    # bitmex()
+    okx()
+    bitmex()
 
-    # set_interval(okx, UPDATE_INTERVAL)
-    # set_interval(bitmex, UPDATE_INTERVAL)
+    set_interval(okx, UPDATE_INTERVAL)
+    set_interval(bitmex, UPDATE_INTERVAL)
 
 if __name__ == "__main__":
     main()
