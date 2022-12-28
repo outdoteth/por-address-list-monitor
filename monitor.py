@@ -2,19 +2,11 @@ import requests
 import pandas as pd
 from io import StringIO
 import json
-import threading
 import xmltodict
 from datetime import datetime
 import yaml
 from clint.textui import progress
-
-def set_interval(func, sec):
-    def func_wrapper():
-        set_interval(func, sec)
-        func()
-    t = threading.Timer(sec, func_wrapper)
-    t.start()
-    return t
+import time
 
 def fetch_with_progress(url):
     print("Loading from " + url)
@@ -30,10 +22,10 @@ def fetch_with_progress(url):
     return chunks.decode("utf-8") 
 
 def okx():
-    print("\nFetching OKX addresses...")
+    print("\nFetching latest OKX addresses...")
 
     # this endpoint was found by inspecting the network requests made by the OKX website;
-    # it's not actually part of their API
+    # it's not actually part of their API.
     root_url = "https://www.okx.com/v2/asset/audit/list"
     audit_file = requests.get(root_url).json()["data"][0]["download"]
     res_txt = fetch_with_progress(audit_file)
@@ -53,7 +45,7 @@ def okx():
         print("Wrote " + str(len(addresses)) + " OKX addresses to json file")
 
 def bitmex():
-    print("\nFetching BitMEX addresses...")
+    print("\nFetching latest BitMEX addresses...")
 
     def parse(file):
         new_file = {}
@@ -61,8 +53,9 @@ def bitmex():
         new_file["name"] = file["Key"]
         return new_file
 
-    # this endpoint was found by inspecting the network requests made by the BitMEX website, it's not actually part of their API
-    # amazon s3 response only returns XML so it must be parsed first
+    # this endpoint was found by inspecting the network requests made by the BitMEX website;
+    # it's not actually part of their API.
+    # amazon s3 response only returns XML so it must be parsed first.
     root_url = "https://s3-eu-west-1.amazonaws.com/public.bitmex.com/?prefix=data/porl/"
     files = xmltodict.parse(requests.get(root_url).text)["ListBucketResult"]["Contents"]
     files = [parse(x) for x in files if "reserves" in x["Key"]]
@@ -84,11 +77,11 @@ def bitmex():
 UPDATE_INTERVAL = 30 * 60 # 30 minutes
 def main():
     print("Starting address monitor...")
-    okx()
-    bitmex()
 
-    set_interval(okx, UPDATE_INTERVAL)
-    set_interval(bitmex, UPDATE_INTERVAL)
+    while (True):
+        okx()
+        bitmex()
+        time.sleep(UPDATE_INTERVAL)
 
 if __name__ == "__main__":
     main()
