@@ -4,66 +4,21 @@
 #
 #    pip-compile requirements.in
 #
-base58==2.1.1
-    # via tronpy
-certifi==2022.12.7
-    # via
-    #   httpx
-    #   requests
-charset-normalizer==2.1.1
-    # via requests
-cytoolz==0.12.1
-    # via eth-utils
-ecdsa==0.15
-    # via tronpy
-eth-abi==2.2.0
-    # via tronpy
-eth-hash==0.3.3
-    # via eth-utils
-eth-typing==2.3.0
-    # via
-    #   eth-abi
-    #   eth-utils
-eth-utils==1.10.0
-    # via eth-abi
-h11==0.14.0
-    # via httpcore
-httpcore==0.12.3
-    # via httpx
-httpx==0.16.1
-    # via tronpy
-idna==3.4
-    # via
-    #   requests
-    #   rfc3986
+args==0.1.0
+    # via clint
+clint==0.5.1
+    # via -r requirements.in
 numpy==1.24.1
     # via pandas
 pandas==1.5.2
     # via -r requirements.in
-parsimonious==0.8.1
-    # via eth-abi
-pycryptodome==3.16.0
-    # via tronpy
 python-dateutil==2.8.2
     # via pandas
 pytz==2022.7
     # via pandas
-requests==2.28.1
-    # via tronpy
-rfc3986[idna2008]==1.5.0
-    # via httpx
-six==1.16.0
-    # via
-    #   ecdsa
-    #   parsimonious
-    #   python-dateutil
-sniffio==1.3.0
-    # via
-    #   httpcore
-    #   httpx
-toolz==0.12.0
-    # via cytoolz
-tronpy==0.2.6
+pyyaml==6.0
     # via -r requirements.in
-urllib3==1.26.13
-    # via requests
+six==1.16.0
+    # via python-dateutil
+xmltodict==0.13.0
+    # via -r requirements.in
