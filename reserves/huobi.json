@@ -53,7 +53,7 @@
     "SOL": [
         "88xTWZMeKfiTgbfEmPLdsUCQcZinwUfk25EBQZ21XMAZ"
     ],
-    "TRX": [
+    "TRON": [
         "TYh6mgoMNZTCsgpYHBz7gttEfrQmDMABub",
         "TKgD8Qnx9Zw3DNvG6o83PkufnMbtEXis4T",
         "TCQQjfccKdMi4CnPAzmZW5TALH4HbwceVb",
@@ -72,7 +72,7 @@
         "0x5c985e89dde482efe97ea9f1950ad149eb73829b",
         "0x18709e89bd403f470088abdacebe86cc60dda12e"
     ],
-    "USDC-TRX": [
+    "USDC-TRON": [
         "TDToUxX8sH4z6moQpK3ZLAN24eupu2ivA4",
         "TNaRAoLUyYEV2uF7GUrzSjRQTU8v5ZJ5VR"
     ],
@@ -86,7 +86,7 @@
         "0xa929022c9107643515f5c777ce9a910f0d1e490c",
         "0x18709e89bd403f470088abdacebe86cc60dda12e"
     ],
-    "USDT-TRX": [
+    "USDT-TRON": [
         "TNaRAoLUyYEV2uF7GUrzSjRQTU8v5ZJ5VR"
     ],
     "XCN-ETH": [
