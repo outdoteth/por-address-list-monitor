@@ -32,8 +32,8 @@ You can visit at: [http://localhost:8000](http://localhost:8000). It should look
 
 ![server](./assets/server.png)
 
-Example GET request to fetch the latest addresses from kucoin:
+Example GET request to fetch the latest addresses from OKX:
 
 ```
-curl http://localhost:8000/kucoin.json
+curl http://localhost:8000/okx.json
 ```
